@@ -15,7 +15,7 @@ import React from "react";
 function Fees({ bg, color }) {
   return (
     <Box color={color}>
-      <Popover placement={"top-end"} border={"none"}>
+      <Popover placement={"top-end"}>
         <PopoverTrigger>
           <Flex alignItems={"center"} cursor={"pointer"}>
             <Text
@@ -29,7 +29,7 @@ function Fees({ bg, color }) {
             <InfoOutlineIcon color={"#a1a1aa"} />
           </Flex>
         </PopoverTrigger>
-        <PopoverContent maxW={"200px"} border={"none"}>
+        <PopoverContent maxW={"200px"} _focusVisible={{ outline: "none" }}>
           <PopoverArrow />
           <PopoverBody border={"none"}>
             <Grid gap={"5px"} p={"0px"} fontSize={"12px"}>

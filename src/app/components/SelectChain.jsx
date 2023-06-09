@@ -9,16 +9,32 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import React, { useState } from "react";
+import { Chains } from "../utils/Chains";
+import { useLoadingContext } from "../context/loading";
 
-function SelectChain({ bg, color }) {
-  const chains = [
-    { name: "Ethereum", logo: "/assets/eth.png" },
-    { name: "Polygon", logo: "/assets/polygon.svg" },
-    { name: "FVM", logo: "/assets/test_logo_small.svg" },
-  ];
-
-  const [selectedChain, setSelectedChain] = useState(chains[0]);
+function SelectChain({ bg, color, setSelectedChain, selectedChain }) {
+  const { setLoading } = useLoadingContext();
   const [popOpen, setPopOPen] = useState(false);
+
+  async function changeNetwork(chain, index) {
+    if (window.ethereum) {
+      try {
+        setLoading(true);
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: chain.chainIdHex }],
+        });
+        setSelectedChain({ key: chain.key, index: index });
+        setPopOPen(!popOpen);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert(
+        "MetaMask is not installed. Please consider installing it: https://metamask.io/download.html"
+      );
+    }
+  }
 
   return (
     <Flex justifyContent={"flex-start"} alignItems={"center"}>
@@ -37,14 +53,15 @@ function SelectChain({ bg, color }) {
               width={15}
               height={15}
               alt={"logo"}
-              src={selectedChain.logo}
+              style={{ borderRadius: "50%" }}
+              src={Chains[selectedChain.index]?.logoURI}
             />
             <ChevronDownIcon pl={"0.2rem"} boxSize={4} />
           </Flex>
         </PopoverTrigger>
-        <PopoverContent maxW={"150px"} _focusVisible={{ outline: "none" }}>
+        <PopoverContent maxW={"180px"} _focusVisible={{ outline: "none" }}>
           <PopoverBody p={"0.3em 0.3em 0.1em"}>
-            {chains.map((chain, index) => {
+            {Chains?.map((chain, index) => {
               return (
                 <Flex
                   key={index}
@@ -56,11 +73,16 @@ function SelectChain({ bg, color }) {
                   p={"0.3rem"}
                   mb={"0.2rem"}
                   onClick={() => {
-                    setSelectedChain({ name: chain.name, logo: chain.logo });
-                    setPopOPen(!popOpen);
+                    changeNetwork(chain, index);
                   }}
                 >
-                  <Image width={18} height={18} alt={"logo"} src={chain.logo} />
+                  <Image
+                    width={18}
+                    height={18}
+                    alt={"logo"}
+                    src={chain.logoURI}
+                    style={{ borderRadius: "50%" }}
+                  />
                   <Text pl={"0.5rem"} fontWeight={"500"}>
                     {chain.name}
                   </Text>

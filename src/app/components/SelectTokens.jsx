@@ -12,16 +12,21 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function SelectTokens({ bg, color }) {
+function SelectTokens({
+  bg,
+  color,
+  tokensData,
+  selectedToken,
+  setSelectedToken,
+}) {
   const tokens = [
     { name: "Ethereum", logo: "/assets/eth.png", currency: "eth" },
     { name: "Polygon", logo: "/assets/polygon.svg", currency: "matic" },
     { name: "FVM", logo: "/assets/test_logo_small.svg", currency: "fil" },
   ];
 
-  const [selectedToken, setSelectedToken] = useState(tokens[0]);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -33,7 +38,17 @@ function SelectTokens({ bg, color }) {
           onClick={onOpen}
           cursor={"pointer"}
         >
-          <Image height={32} width={32} alt={"logo"} src={selectedToken.logo} />
+          <Image
+            height={32}
+            width={32}
+            alt={"logo"}
+            style={{ borderRadius: "50%" }}
+            src={
+              selectedToken?.logo_url
+                ? selectedToken?.logo_url
+                : "/assets/token.png"
+            }
+          />
           <Text
             fontSize={"20px"}
             fontWeight={700}
@@ -41,7 +56,7 @@ function SelectTokens({ bg, color }) {
             pr={"0.3em"}
             textTransform={"uppercase"}
           >
-            {selectedToken.currency}
+            {selectedToken?.contract_ticker_symbol}
           </Text>
           <ChevronDownIcon boxSize={4} />
         </Flex>
@@ -62,7 +77,7 @@ function SelectTokens({ bg, color }) {
               maxH={"300px"}
               overflow={"scroll"}
             >
-              {tokens.map((token, index) => {
+              {tokensData?.map((token, index) => {
                 return (
                   <Flex
                     key={index}
@@ -82,7 +97,10 @@ function SelectTokens({ bg, color }) {
                       width={35}
                       height={35}
                       alt={"logo"}
-                      src={token.logo}
+                      style={{ borderRadius: "50%" }}
+                      src={
+                        token.logo_url ? token.logo_url : "/assets/token.png"
+                      }
                     />
                     <Flex
                       w={"100%"}
@@ -100,7 +118,7 @@ function SelectTokens({ bg, color }) {
                           fontWeight={"500"}
                           textTransform={"uppercase"}
                         >
-                          {token.currency}
+                          {token.contract_ticker_symbol}
                         </Text>
                         <Text
                           fontSize={"14px"}
@@ -109,10 +127,12 @@ function SelectTokens({ bg, color }) {
                           color={"#9ca3af"}
                           textTransform={"capitalize"}
                         >
-                          {token.name}
+                          {token.contract_name}
                         </Text>
                       </Flex>
-                      <Text>0.0 ETH</Text>
+                      <Text>{`${(
+                        token.balance / Math.pow(10, token.contract_decimals)
+                      ).toFixed(2)}  ${token.contract_ticker_symbol}`}</Text>
                     </Flex>
                   </Flex>
                 );

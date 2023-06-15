@@ -130,6 +130,7 @@ function SelectTokens({
                           {token.contract_name}
                         </Text>
                       </Flex>
+
                       <Text>{`${(
                         token.balance / Math.pow(10, token.contract_decimals)
                       ).toFixed(2)}  ${token.contract_ticker_symbol}`}</Text>

@@ -24,7 +24,11 @@ function SelectChain({ bg, color, setSelectedChain, selectedChain }) {
           method: "wallet_switchEthereumChain",
           params: [{ chainId: chain.chainIdHex }],
         });
-        setSelectedChain({ key: chain.key, index: index });
+        setSelectedChain({
+          key: chain.key,
+          index: index,
+          chainId: chain.chainId,
+        });
         setPopOPen(!popOpen);
       } catch (error) {
         console.log(error);

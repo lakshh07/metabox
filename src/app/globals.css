@@ -90,13 +90,13 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
-
+    rgb(var(--background-start-rgb)); */
+  background-color: #131012;
   transition: color 0.5s ease;
   transition: background 0.5s ease;
 }

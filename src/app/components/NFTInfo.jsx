@@ -1,9 +1,37 @@
 import { Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import truncateMiddle from "truncate-middle";
 
-function NFTInfo({ bg, color }) {
+function NFTInfo({ bg, color, nftParams, baseUrl }) {
+  const [nftChainDetails, setNftChainDetails] = useState();
+
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+    },
+  };
+
+  async function getNftTokenDetails() {
+    await fetch(
+      `${baseUrl}/token?` +
+        new URLSearchParams({
+          chain: nftParams?.chainId,
+          token: nftParams?.paymentToken,
+        }),
+      options
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setNftChainDetails(data);
+      });
+  }
+
+  useEffect(() => {
+    // getNftTokenDetails();
+  }, []);
+
   return (
     <Flex alignItems={"center"}>
       <Flex alignItems={"center"} cursor={"pointer"}>
@@ -11,15 +39,12 @@ function NFTInfo({ bg, color }) {
           width={16}
           height={16}
           alt={"logo"}
-          src={"/assets/test_logo_small.svg"}
+          src={nftChainDetails?.logoURI}
         />
         <Text px={"0.5rem"}>
-          {truncateMiddle(
-            "0x563361c978C1630Af85E8AFd28821E8eF26b1Df8" || "",
-            5,
-            4,
-            "..."
-          )}
+          {nftParams?.title
+            ? nftParams?.title
+            : truncateMiddle(nftParams?.address || "", 5, 4, "...")}
         </Text>
       </Flex>
 
@@ -29,7 +54,8 @@ function NFTInfo({ bg, color }) {
         textAlign={"right"}
         lineHeight={"21px"}
       >
-        0.01 ETH
+        {nftParams?.displayCost / Math.pow(10, nftChainDetails?.decimals)}{" "}
+        {nftChainDetails?.symbol}
       </Text>
     </Flex>
   );

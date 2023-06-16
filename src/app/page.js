@@ -12,9 +12,9 @@ export default function Home() {
   const destinationAddress = "";
 
   return (
-    <LoadingContext.Provider value={{ loading, setLoading }}>
-      <main className={styles.main}>
-        {/* <MetaBox
+    // <LoadingContext.Provider value={{ loading, setLoading }}>
+    <>
+      {/* <MetaBox
           bg={"white"}
           color={"#1A202C"}
           signer={signer}
@@ -31,8 +31,8 @@ export default function Home() {
             },
           }}
         ></MetaBox> */}
-        <Main />
-      </main>
-    </LoadingContext.Provider>
+      <Main />
+    </>
+    // </LoadingContext.Provider>
   );
 }

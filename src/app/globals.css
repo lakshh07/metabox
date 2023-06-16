@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Philosopher:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
   --max-width: 1100px;
@@ -111,6 +112,56 @@ a {
 }
 .h-shadow-black-high {
   filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 5px 3px) !important;
+}
+
+.hero-span {
+  font-family: "Press Start 2P" !important;
+}
+
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 5px;
+  border: 1px solid rgba(243, 254, 156, 0.3);
+}
+.m-bg {
+  background-image: url(/assets/texture-7.png) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.nft-section-bg {
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat;
+  background-image: url("/assets/nfs-bg.svg");
+}
+.outline-m {
+  border: 1px solid #2af4ad;
+}
+
+.nft-grid {
+  grid-auto-flow: row dense;
+  grid-template-columns: 1.3fr 1fr 0.2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "img-section details-section interact-section"
+    "img-section wid-section wid-section";
+}
+
+.wid-section {
+  grid-area: wid-section;
+}
+.img-section {
+  grid-area: img-section;
+}
+.details-section {
+  grid-area: details-section;
+}
+.interact-section {
+  grid-area: interact-section;
 }
 
 @media (prefers-color-scheme: dark) {

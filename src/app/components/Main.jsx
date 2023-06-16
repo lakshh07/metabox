@@ -1,11 +1,22 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
+import Navbar from "./Landing/Navbar";
+import MainSection from "./Landing/MainSection";
+import WidgetThemeSection from "./Landing/WidgetThemeSection";
+import MarketplaceSection from "./Landing/MarketplaceSection";
+import Footer from "./Landing/Footer";
+import Features from "./Landing/Features";
 
 function Main() {
   return (
-    <Box bg={"#131012"} h={"100%"} w={"100%"}>
-      Main
-    </Box>
+    <>
+      <Navbar />
+      <MainSection />
+      <Features />
+      <WidgetThemeSection />
+      <MarketplaceSection />
+      <Footer />
+    </>
   );
 }
 

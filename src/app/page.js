@@ -4,6 +4,9 @@ import styles from "./page.module.css";
 import LoadingContext from "./context/loading";
 import { useState } from "react";
 import Main from "./components/Main";
+import { erc721Abi } from "./utils/ERC721";
+import { ethers } from "ethers";
+import { useContractRead, useAccount } from "wagmi";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);

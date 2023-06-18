@@ -20,6 +20,24 @@ const nextConfig = {
         port: "",
         // pathname: "/account123/**",
       },
+      {
+        protocol: "https",
+        hostname: "ipfs.io",
+        port: "",
+        // pathname: "/account123/**",
+      },
+      {
+        protocol: "https",
+        hostname: "nft-cdn.alchemy.com",
+        port: "",
+        // pathname: "/account123/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.seadn.io",
+        port: "",
+        // pathname: "/account123/**",
+      },
     ],
   },
 };

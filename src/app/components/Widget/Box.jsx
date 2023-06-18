@@ -20,6 +20,13 @@ import { Chains } from "../../utils/Chains";
 import { MdLocalGasStation } from "react-icons/md";
 
 import fetch from "node-fetch";
+import {
+  useAccount,
+  useContractRead,
+  useSigner,
+  useWaitForTransaction,
+} from "wagmi";
+import { ethers } from "ethers";
 
 function MetaBox({ bg, color, signer, destinationAddress, title, nftParams }) {
   const { setLoading } = useLoadingContext();
@@ -200,9 +207,10 @@ function MetaBox({ bg, color, signer, destinationAddress, title, nftParams }) {
                   fontSize={"18px"}
                   textTransform={"uppercase"}
                 >
-                  {estimate
-                    ? Number(estimate?.transactionRequest?.value) /
-                      Math.pow(10, selectedToken?.contract_decimals)
+                  {estimate?.transactionRequest?.value
+                    ? ethers.formatEther(
+                        Number(estimate?.transactionRequest?.value)
+                      )
                     : 0}{" "}
                   {selectedToken?.contract_ticker_symbol}
                 </Text>

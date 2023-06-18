@@ -26,40 +26,21 @@ function NftPage() {
   const signer = "";
   const destinationAddress = "";
 
-  const nftData = [
-    {
-      title: "Lakshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Auction",
-      price: "0.11 eth",
-      description: "thos is nft description",
-    },
-    {
-      title: "Lakdsdfsafcshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Fixed",
-      price: "0.11 eth",
-      description: "thos is nft description",
-    },
-    {
-      title: "Lakshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Fixed",
-      price: "0.11 eth",
-      description: "thos is nft description",
-    },
-    {
-      title: "Lakshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Auction",
-      price: "0.11 eth",
-      description: "thos is nft description",
-    },
-  ];
+  const nftData = [];
 
   return (
     <Box>
       <Navbar />
+
+      <Text
+        mx={"8rem"}
+        color={"#f5f5f5"}
+        cursor={"pointer"}
+        onClick={() => router.back()}
+        textDecoration={"underline"}
+      >
+        Back
+      </Text>
 
       <Grid mx={"8rem"} mt={"2.2rem"} className="nft-grid">
         <GridItem
@@ -72,14 +53,14 @@ function NftPage() {
           <Image
             height={460}
             width={570}
-            src={"/assets/667.gif"}
+            src={nftData[params.id].img}
             style={{ borderRadius: "10px" }}
           />
         </GridItem>
 
         <GridItem textAlign={"left"} className={"details-section"}>
           <Text opacity={0.8} fontWeight={600}>
-            {nftData[params.id].owner}
+            {nftData[params.id].contractAdd}
           </Text>
           <Heading my={"10px"} fontWeight={700} fontSize={"3em"}>
             {nftData[params.id].title}
@@ -95,7 +76,7 @@ function NftPage() {
           </Tag>
 
           <Text mt={"10px"} opacity={0.8}>
-            {nftData[params.id].description}
+            {nftData[params.id].des}
           </Text>
         </GridItem>
 
@@ -139,23 +120,24 @@ function NftPage() {
         </GridItem>
 
         <GridItem className="wid-section">
-          {/* <MetaBox
+          <MetaBox
             bg={"white"}
             color={"#1A202C"}
             signer={signer}
             destinationAddress={destinationAddress}
             nftParams={{
-              title: "Autumn", // title of NFT
+              title: nftData[params.id].title, // title of NFT
               displayCost: "2000000000000000", //di
-              address: "0x3007E0eB44222AC69E1D3c93A9e50F9CA73F53a1", //NFT Address
-              chainId: 1, //NFT exist i.e Destination Chain ToChain
+              address: nftData[params.id].contractAdd, //NFT Address
+              chainId: 137, //NFT exist i.e Destination Chain ToChain
               paymentToken: "0x0000000000000000000000000000000000000000", // NFT price token address ToToken destination token
               mintParams: {
+                abi: "",
                 params: ["0x563361c978C1630Af85E8AFd28821E8eF26b1Df8", 1], // destination NFT account to whom nft would be transfered
                 cost: "0.00005", // NFT price in wei or the total amount
               },
             }}
-          ></MetaBox> */}
+          ></MetaBox>
           {/* <MetaBox /> */}
         </GridItem>
       </Grid>

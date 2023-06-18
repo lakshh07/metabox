@@ -61,8 +61,7 @@ function Navbar() {
           </Flex>
         </Flex>
         <Box>
-          {/* <ConnectButton /> */}
-          <Button>connect wallet</Button>
+          <ConnectButton />
         </Box>
       </Flex>
     </Box>

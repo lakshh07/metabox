@@ -7,32 +7,7 @@ import React from "react";
 function NftsSection() {
   const router = useRouter();
 
-  const nftData = [
-    {
-      title: "Lakshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Auction",
-      price: "0.11 eth",
-    },
-    {
-      title: "Lakshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Fixed",
-      price: "0.11 eth",
-    },
-    {
-      title: "Lakshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Fixed",
-      price: "0.11 eth",
-    },
-    {
-      title: "Lakshay's PFP",
-      owner: "Lakshay Maini",
-      type: "Auction",
-      price: "0.11 eth",
-    },
-  ];
+  const nftData = [];
 
   return (
     <Box className={"nft-section-bg"} mx={"5rem"} py={"10rem"}>
@@ -50,24 +25,32 @@ function NftsSection() {
               p={"1em"}
               m={"1em"}
               borderRadius={"10px"}
+              cursor={"pointer"}
               onClick={() => router.push(`/marketplace/nfts/${index}`)}
             >
-              <Flex alignItems={"center"}>
+              {/* <Flex alignItems={"center"}>
                 <Box borderRadius={"50px"} overflow={"hidden"}>
-                  <Image height={40} width={40} src={"/assets/laksh.gif"} />
+                  <Image
+                    height={40}
+                    width={40}
+                    src={
+                      "https://ipfs.io/ipfs/QmPsN7hVArJz3GhUjKpYuHGGFBtaxV5BcQMEDNEEo5VzpX/FKhoO37akAEz2aB.gif"
+                    }
+                  />
                 </Box>
 
                 <Text fontWeight={500} ml={"1em"}>
                   {list.owner}
                 </Text>
-              </Flex>
+              </Flex> */}
               <Box
                 borderRadius={"10px"}
                 overflow={"hidden"}
                 align={"center"}
                 mt={"1.2em"}
+                h={300}
               >
-                <Image height={200} width={300} src={"/assets/667.gif"} />
+                <Image height={200} width={300} src={list.img} />
               </Box>
 
               <Flex

@@ -10,11 +10,11 @@ function WidgetThemeSection() {
     },
     {
       title: "White",
-      img: "box-sample-purple.webp",
+      img: "box-sample-white.webp",
     },
     {
       title: "Black",
-      img: "box-sample-purple.webp",
+      img: "box-sample-black.webp",
     },
   ];
   return (

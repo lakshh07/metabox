@@ -1,6 +1,7 @@
 export const Chains = [
   {
     key: "matic-mainnet",
+    ah_key: "polygon-mainnet",
     name: "Polygon",
     logoURI:
       "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/polygon.svg",
@@ -9,6 +10,7 @@ export const Chains = [
   },
   {
     key: "eth-mainnet",
+    ah_key: "eth-mainnet",
     name: "Ethereum",
     logoURI:
       "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/ethereum.svg",
@@ -17,6 +19,7 @@ export const Chains = [
   },
   {
     key: "eth-goerli",
+    ah_key: "eth-goerli",
     name: "Goerli Ethereum",
     logoURI:
       "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/ethereum.svg",
@@ -25,6 +28,7 @@ export const Chains = [
   },
   {
     key: "matic-mumbai",
+    ah_key: "polygon-mumbai",
     name: "Polygon Mumbai",
     logoURI:
       "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/polygon.svg",

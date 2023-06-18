@@ -29,7 +29,7 @@ function NFTInfo({ bg, color, nftParams, baseUrl }) {
   }
 
   useEffect(() => {
-    // getNftTokenDetails();
+    getNftTokenDetails();
   }, []);
 
   return (

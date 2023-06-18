@@ -14,10 +14,13 @@
     "@chakra-ui/react": "^2.7.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@openzeppelin/contracts": "^4.9.2",
     "@rainbow-me/rainbowkit": "^1.0.2",
+    "alchemy-sdk": "^2.9.0",
+    "dotenv": "^16.3.1",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
-    "ethers": "^6.5.1",
+    "ethers": "^6.4.0",
     "framer-motion": "^10.12.16",
     "next": "13.4.4",
     "node-fetch": "2",
@@ -29,5 +32,20 @@
     "truncate-middle": "^1.0.6",
     "viem": "^1.0.7",
     "wagmi": "^1.2.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^1.0.0",
+    "@typechain/ethers-v6": "^0.4.0",
+    "@typechain/hardhat": "^8.0.0",
+    "chai": "^4.2.0",
+    "hardhat": "^2.14.0",
+    "hardhat-abi-exporter": "^2.10.1",
+    "hardhat-gas-reporter": "^1.0.8",
+    "solidity-coverage": "^0.8.0",
+    "typechain": "^8.1.0"
   }
 }
